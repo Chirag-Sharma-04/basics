@@ -1,4 +1,6 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
 
 package_name = 'basics'
 
@@ -10,6 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name), glob('launch/*.launch.py'))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -25,7 +28,8 @@ setup(
             "string_pub = basics.string_pub:main",
             "pose_sub = basics.pose_sub:main",
             "string_sub = basics.string_sub:main",
-            "pub_sub = basics.pub_sub:main"
+            "pub_sub = basics.pub_sub:main",
+            
         ],
     },
 )
